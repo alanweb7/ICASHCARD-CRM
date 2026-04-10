@@ -236,15 +236,6 @@ class Link_manager extends REST_Controller
                 $postData = $this->input->post();
             }
 
-            // Responder com sucesso TESTE
-            $this->response([
-                'status' => 'success',
-                'message' => 'Dados recebidos com sucesso.',
-                'data' => $postData
-            ], REST_Controller::HTTP_OK);
-
-            return;
-
             // Verificar se os dados foram recebidos corretamente
             if (!empty($postData)) {
 
@@ -304,11 +295,44 @@ class Link_manager extends REST_Controller
 
 
                 $proposal_id = $this->input->post('order_number', TRUE);
+
+                if (!ctype_digit((string) $proposal_id)) {
+                    $this->response([
+                        'status' => 'error',
+                        'message' => 'order_number inválido, deve ser inteiro.'
+                    ], REST_Controller::HTTP_BAD_REQUEST);
+                    return;
+                }
+
                 $proposal = $this->proposals_model->get($proposal_id);
+
+                if ($proposal === null) {
+                    $this->response([
+                        'status' => 'error',
+                        'message' => 'Proposta não encontrada para o order_number fornecido.'
+                    ], REST_Controller::HTTP_NOT_FOUND);
+                    return;
+                }
+
                 $link_id = $proposal->link_id ?? null;
                 $deleteLink = false;
-
                 $payment_status = $this->input->post('payment_status', TRUE);
+
+                // Statud do da etapa de pagamento
+                $payment_status_current = get_custom_field_value($proposal_id, 64, 'proposal');
+
+                $is_closed = ["Liberar Crédito","Crédito Enviado"];
+
+                // Verificar se a proposta já está em uma etapa de fechamento
+                if (in_array($payment_status_current, $is_closed)) {
+                    $this->response([
+                        'status' => 'error',
+                        'message' => 'A proposta já está em uma etapa de fechamento. Nenhuma atualização adicional é permitida.',
+                        'data' => $proposal,
+                        'payment_status_current' => $payment_status_current
+                    ], REST_Controller::HTTP_BAD_REQUEST);
+                    return;
+                }
 
                 /**
                  * ETAPAS DA PROPOSTA
