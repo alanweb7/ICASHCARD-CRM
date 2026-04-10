@@ -1,0 +1,410 @@
+.span-icon-contract {
+
+    font-size: 30px;
+}
+
+/* estilo suave do reload */
+.row-updated {
+    animation: flashUpdate 1s ease-in-out;
+}
+
+@keyframes flashUpdate {
+    0% {
+        background-color: #d1ffd6;
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
+
+.table-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* FIM estilo suave do reload */
+
+.badget_info {
+    padding: 5px 15px;
+    background-color: #d5d5d5;
+    border-radius: 50px;
+}
+
+.btn-info_two {
+    background-color: rgb(255, 145, 0);
+}
+
+/* estilos para tabelas customizadas */
+
+table.dataTable td {
+    white-space: nowrap;
+}
+
+/* estilos na página */
+
+.export_always {
+    display: none;
+    text-align: right;
+}
+
+.badget_info {
+    padding: 5px 15px;
+    background-color: #d5d5d5;
+    border-radius: 50px;
+}
+
+.btn-info_two {
+    background-color: rgb(255, 145, 0);
+}
+
+.info_account {
+    float: right;
+}
+
+.custom-width {
+    width: 200px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.status_p {
+    display: block !important;
+    text-align: center !important;
+    width: 150px !important;
+    align-items: center;
+    border-radius: .375rem;
+    display: inline-flex;
+    padding: .45rem .5rem;
+}
+
+.bg-secondary {
+    background-color: rgb(109, 109, 109);
+    color: rgb(255, 255, 255);
+}
+
+.link-content {
+    padding: 3px 5px;
+    margin-top: 5px;
+}
+
+.col_name {
+    min-width: 150px !important;
+}
+
+.no-click {
+    pointer-events: none;
+    /* Desativa cliques do mouse */
+    cursor: default;
+    /* Mantém o cursor padrão */
+}
+
+.document-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+/* check box em linha */
+#parameterForm label {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/* estilo do link gerado */
+
+#copyLink {
+    cursor: pointer;
+    color: #007BFF;
+    font-size: 16px;
+}
+
+#link-gerado,
+#generate_contract,
+#link_payment,
+#save_info,
+#aprove_documents,
+.form-check-actions,
+#informations_sub,
+#parameterForm,
+.form-check {
+    display: none;
+}
+
+#recusa_container {
+    display: none;
+}
+
+#copyLink:hover {
+    text-decoration: underline;
+}
+
+/* .document-item {
+        height: 180px;
+    } */
+
+.document-description {
+    padding: 10px;
+    background-color: #fff !important;
+    font-weight: bold;
+}
+
+.custom-link {
+    color: blue !important;
+    /* Cor do texto */
+    /* text-decoration: underline !important; */
+    /* Linha embaixo do texto */
+    cursor: pointer !important;
+    /* Cursor de mão ao passar o mouse */
+    text-align: left;
+}
+
+.custom-link:hover {
+    color: darkblue;
+    /* Cor ao passar o mouse */
+}
+
+/* LOADING... */
+/* Tela de fundo semi-transparente */
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo escuro com transparência */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Garanta que fique acima de outros elementos */
+    display: none;
+}
+
+#fountainG {
+    position: relative;
+    top: 50%;
+    width: 234px;
+    height: 28px;
+    margin: auto;
+    background: transparent;
+}
+
+.fountainG {
+    position: absolute;
+    top: 0;
+    background-color: rgb(3, 24, 158);
+    width: 28px;
+    height: 28px;
+    animation-name: bounce_fountainG;
+    -o-animation-name: bounce_fountainG;
+    -ms-animation-name: bounce_fountainG;
+    -webkit-animation-name: bounce_fountainG;
+    -moz-animation-name: bounce_fountainG;
+    animation-duration: 1.5s;
+    -o-animation-duration: 1.5s;
+    -ms-animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-direction: normal;
+    -o-animation-direction: normal;
+    -ms-animation-direction: normal;
+    -webkit-animation-direction: normal;
+    -moz-animation-direction: normal;
+    transform: scale(.3);
+    -o-transform: scale(.3);
+    -ms-transform: scale(.3);
+    -webkit-transform: scale(.3);
+    -moz-transform: scale(.3);
+    border-radius: 19px;
+    -o-border-radius: 19px;
+    -ms-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    -moz-border-radius: 19px;
+}
+
+#fountainG_1 {
+    left: 0;
+    animation-delay: 0.6s;
+    -o-animation-delay: 0.6s;
+    -ms-animation-delay: 0.6s;
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+}
+
+#fountainG_2 {
+    left: 29px;
+    animation-delay: 0.75s;
+    -o-animation-delay: 0.75s;
+    -ms-animation-delay: 0.75s;
+    -webkit-animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+}
+
+#fountainG_3 {
+    left: 58px;
+    animation-delay: 0.9s;
+    -o-animation-delay: 0.9s;
+    -ms-animation-delay: 0.9s;
+    -webkit-animation-delay: 0.9s;
+    -moz-animation-delay: 0.9s;
+}
+
+#fountainG_4 {
+    left: 88px;
+    animation-delay: 1.05s;
+    -o-animation-delay: 1.05s;
+    -ms-animation-delay: 1.05s;
+    -webkit-animation-delay: 1.05s;
+    -moz-animation-delay: 1.05s;
+}
+
+#fountainG_5 {
+    left: 117px;
+    animation-delay: 1.2s;
+    -o-animation-delay: 1.2s;
+    -ms-animation-delay: 1.2s;
+    -webkit-animation-delay: 1.2s;
+    -moz-animation-delay: 1.2s;
+}
+
+#fountainG_6 {
+    left: 146px;
+    animation-delay: 1.35s;
+    -o-animation-delay: 1.35s;
+    -ms-animation-delay: 1.35s;
+    -webkit-animation-delay: 1.35s;
+    -moz-animation-delay: 1.35s;
+}
+
+#fountainG_7 {
+    left: 175px;
+    animation-delay: 1.5s;
+    -o-animation-delay: 1.5s;
+    -ms-animation-delay: 1.5s;
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+}
+
+#fountainG_8 {
+    left: 205px;
+    animation-delay: 1.64s;
+    -o-animation-delay: 1.64s;
+    -ms-animation-delay: 1.64s;
+    -webkit-animation-delay: 1.64s;
+    -moz-animation-delay: 1.64s;
+}
+
+
+
+@keyframes bounce_fountainG {
+    0% {
+        transform: scale(1);
+        background-color: rgb(33, 0, 163);
+    }
+
+    100% {
+        transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+@-o-keyframes bounce_fountainG {
+    0% {
+        -o-transform: scale(1);
+        background-color: rgb(33, 0, 163);
+    }
+
+    100% {
+        -o-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+@-ms-keyframes bounce_fountainG {
+    0% {
+        -ms-transform: scale(1);
+        background-color: rgb(33, 0, 163);
+    }
+
+    100% {
+        -ms-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+@-webkit-keyframes bounce_fountainG {
+    0% {
+        -webkit-transform: scale(1);
+        background-color: rgb(33, 0, 163);
+    }
+
+    100% {
+        -webkit-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+@-moz-keyframes bounce_fountainG {
+    0% {
+        -moz-transform: scale(1);
+        background-color: rgb(33, 0, 163);
+    }
+
+    100% {
+        -moz-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+/* field motvo recusa */
+
+input#observation {
+    width: 100%;
+}
+
+/* ESTILO DO MODAL DE DOCUMENTOS */
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+/* estilos 01-08-2025 */
+.table.dataTable>thead:first-child>tr:first-child>th:first-child {
+    border-left: 10px;
+    border-color: rgb(6 165 6 / 70%);
+    border-style: solid;
+}
+
+/* spinner e overlay of screen */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    font-size: 18px;
+}

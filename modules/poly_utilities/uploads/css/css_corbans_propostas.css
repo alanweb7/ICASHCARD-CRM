@@ -1,0 +1,16 @@
+/* Remova o display: flex */
+.document-grid {
+    gap: 20px; /* opcional, funciona com Bootstrap 5 */
+}
+
+/* mantêm as imagens 100% dentro dos cards */
+.document-item img {
+    width: 100%;
+    height: auto;
+}
+
+.document-description {
+    padding: 10px;
+    background-color: #f4f4f4;
+    font-weight: bold;
+}

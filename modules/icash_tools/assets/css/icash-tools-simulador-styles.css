@@ -1,0 +1,30 @@
+    #resultadoSimulacao {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 25px 20px;
+        font-size: 15px;
+        line-height: 1.8;
+        min-height: 300px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    #resultadoSimulacao p {
+        margin-bottom: 20px;
+    }
+
+    #resultadoSimulacao span {
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* STYLE DO FORM */
+
+    .d-none {
+        display: none;
+    }
+
+    .is-invalid {
+        border-color: #dc3545;
+        background-color: #fff5f5;
+    }

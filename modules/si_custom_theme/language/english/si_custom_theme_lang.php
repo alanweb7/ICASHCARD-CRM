@@ -1,0 +1,108 @@
+<?php
+
+$lang['si_custom_theme'] = 'Custom Theme';
+$lang['si_custom_theme_menu'] = 'Custom Theme';
+$lang['si_custom_staff_theme_menu'] = 'My Theme';
+$lang['si_custom_theme_title'] = 'Custom Theme Settings';
+
+
+$lang['si_ct_select_theme'] = 'Select Theme';
+$lang['si_ct_select_theme_tab_info'] = 'Select the Theme you want to set as the default theme for all employees.';
+$lang['si_ct_select_clients_theme_tab_info'] = 'Select the Theme you want to set as the default theme for all clients.';
+$lang['si_ct_create_theme'] = 'Customize Theme';
+$lang['si_ct_create_theme_tab_info'] = 'You can create your own custom theme by selecting an existing theme or creating your own choice of colors. You can also edit existing themes from here.';
+$lang['si_ct_select_theme_to_copy'] = 'Select existing theme to customize';
+$lang['si_ct_edit_theme'] = 'Edit Theme';
+$lang['si_ct_save_new_theme'] = 'Save as New Theme';
+$lang['si_ct_new_theme_name'] = 'Your Theme Name';
+$lang['si_ct_reset_info'] = 'Reset Theme to default, not Custom CSS. Any changes made to themes will be reset';
+$lang['si_ct_admin_menu'] = 'Admin side menus';
+$lang['si_ct_customers'] = 'Customer Side';
+$lang['si_ct_buttons'] = 'Buttons';
+$lang['si_ct_tabs'] = 'Tabs';
+$lang['si_ct_modals'] = 'Modals';
+$lang['si_ct_general'] = 'Others';
+$lang['si_ct_texts'] = 'Texts';
+$lang['si_ct_custom_css'] = 'Custom CSS';
+$lang['si_ct_example_modal_heading'] = 'Modal Title Example';
+$lang['si_ct_sample_text'] = 'Sample Text';
+$lang['si_ct_modal_body'] = 'The Modal Body is here';
+$lang['si_ct_admin'] = 'Admin side';
+$lang['si_ct_customers_and_admin'] = 'Customers and Admin Both Sides';
+$lang['si_ct_ca_info'] = 'Custom CSS for use in both the admin and client areas.';
+$lang['si_ct_error_in_delete'] = 'Error Deleting Theme';
+$lang['si_ct_settings'] = 'Settings';
+#settings
+$lang['si_ct_settings'] = 'Custom Theme Settings';
+$lang['si_ct_settings_validate'] = 'Validate';
+$lang['si_ct_settings_purchase_code_help'] = "You received the purchase code in your email when purchasing this module. Please add this code here and validate to activate this module.";
+$lang['si_ct_settings_valid_purchase_help'] = "It is recommended to purchase this module only from <a href='https://codecanyon.net/user/sejalinfotech/portfolio' target='_blank'>https://codecanyon.net/< /a>. DO NOT BUY THE SCRIPT FROM OTHER NULLED WEBSITES. They are not authorized to sell this script and may alter the module and inject the code with malware or compromised code that can/will cause harm to your server.<br/>";
+$lang['si_ct_settings_activated_info'] = "You have successfully activated this module. To configure your theme styles, click here";
+#database settings fields
+$lang['si_ct_settings_activation_code'] = 'Enter the Module License Purchase Code';
+
+#if you don't know what you're doing, leave them untranslated
+$lang['si_ct_sidebar_bg_color'] = 'Menu Background Color';
+$lang['si_ct_sidebar_open_bg_color'] = 'Open Submenu Background Color';
+$lang['si_ct_sidebar_links_color'] = 'Menu Links Color';
+$lang['si_ct_sidebar_user_welcome_bg_color'] = 'User Welcome Menu Background Color <font color="red"></font>';
+$lang['si_ct_sidebar_user_welcome_text_color'] = 'User Welcome Menu Text Color <font color="red"></font>';
+$lang['si_ct_sidebar_active_item_bg_color'] = 'Background Color of Active Menu Item';
+$lang['si_ct_sidebar_active_item_color'] = 'Active Menu Item Color';
+$lang['si_ct_sidebar_active_sub_item_bg_color'] = 'Background Color of Active Menu Subitem';
+$lang['si_ct_sidebar_active_sub_item_links_color'] = 'Submenu Links Color';
+$lang['si_ct_top_header_bg_color'] = 'Top Header Background Color';
+$lang['si_ct_top_header_bg_links_color'] = 'Top Header Links Color';
+$lang['si_ct_navigation_bg_color'] = 'Menu Background Color';
+$lang['si_ct_navigation_link_color'] = 'Menu Links Color';
+$lang['si_ct_footer_background'] = 'Footer Background Color';
+$lang['si_ct_footer_text_color'] = 'Footer Text Color';
+$lang['si_ct_customer_login_background'] = 'Customer Login Background';
+$lang['si_ct_links'] = 'Links';
+$lang['si_ct_color'] = 'Color';
+$lang['si_ct_link_hover_color'] = 'Link Hover/Focus Color';
+$lang['si_ct_table_headings_color'] = 'Table Headings Color';
+$lang['si_ct_table_headings_bg_color'] = 'Table Headings Background Color';
+$lang['si_ct_example_table_heading'] = 'Example Heading';
+$lang['si_ct_table_content_bg_color'] = 'Table Content Background Color';
+$lang['si_ct_example_table_content'] = 'Example Content';
+$lang['si_ct_admin_login_background'] = 'Administrator Login Background';
+$lang['si_ct_admin_page_background'] = 'All Page Background';
+$lang['si_ct_admin_page_text_color'] = 'Text Color for All Pages';
+$lang['si_ct_admin_inputs_bg_color'] = 'Inputs Background Color';
+$lang['si_ct_admin_inputs_border_color'] = 'Input Border Color';
+$lang['si_ct_admin_horizontal_line_color'] = 'Horizontal Line Color';
+$lang['si_ct_admin_panel_background'] = 'Administrator Panels Background';
+$lang['si_ct_admin_panel_heading_color'] = 'Admin Panel Header Color';
+$lang['si_ct_example_admin_panel'] = 'This is an example panel';
+$lang['si_ct_text_muted'] = 'Muted Text';
+$lang['si_ct_text_danger'] = 'Dangerous Text';
+$lang['si_ct_text_warning'] = 'Warning Text';
+$lang['si_ct_text_info'] = 'Information Text';
+$lang['si_ct_text_success'] = 'Success Text';
+$lang['si_ct_example_text'] = 'Example %s';
+$lang['si_ct_tabs_bg_color'] = 'Tabs Background Color';
+$lang['si_ct_tabs_links_color'] = 'Tabs Links Color';
+$lang['si_ct_tabs_active_links_color'] = 'Tab Link Active/Hover Color';
+$lang['si_ct_tabs_active_border_color'] = 'Active Tab Border Color';
+$lang['si_ct_tabs_border_color'] = 'Tabs Border Color';
+$lang['si_ct_modal_heading_bg'] = 'Header Background';
+$lang['si_ct_modal_heading_color'] = 'Header Color';
+$lang['si_ct_modal_close_btn_color'] = 'Close Button Color';
+$lang['si_ct_modal_white_text_color'] = 'Modal White Text Color';
+$lang['si_ct_modal_body_bg'] = 'Body Background';
+$lang['si_ct_button_default'] = 'Default Button';
+$lang['si_ct_button_info'] = 'Information Button';
+$lang['si_ct_button_success'] = 'Success Button';
+$lang['si_ct_button_danger'] = 'Danger Button';
+$lang['si_ct_settings_bg_img_admin_login'] = 'Admin Login Background Image';
+$lang['si_ct_settings_bg_img_customer_login'] = 'Customer Login Background Image';
+$lang['si_ct_settings_bg_img_admin_menu'] = 'Admin Menu Background Image';
+$lang['si_ct_settings_bg_img_admin_pages'] = 'Admin Pages Background Image';
+$lang['si_ct_settings_bg_img_customer_pages'] = 'Customer Pages Background Image';
+$lang['si_ct_settings_customer_login_header'] = 'Show Customer Side Header (Before Login)';
+$lang['si_ct_settings_customer_login_footer'] = 'Show Customer Side Footer (Before Login)';
+$lang['si_ct_settings_enable_staff_theme'] = 'Allow employees to select their theme';
+$lang['si_ct_settings_enable_client_theme'] = 'Allow clients to select their theme';
+
+$lang['si_ct_note_for_version'] = 'Note: <font color="red">**</font> Fields are for lower versions of Perfex CRM, not 3.0 or higher';
