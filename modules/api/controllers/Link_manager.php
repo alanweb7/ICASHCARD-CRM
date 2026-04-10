@@ -236,6 +236,15 @@ class Link_manager extends REST_Controller
                 $postData = $this->input->post();
             }
 
+            // Responder com sucesso TESTE
+            $this->response([
+                'status' => 'success',
+                'message' => 'Dados recebidos com sucesso.',
+                'data' => $postData
+            ], REST_Controller::HTTP_OK);
+
+            return;
+
             // Verificar se os dados foram recebidos corretamente
             if (!empty($postData)) {
 
@@ -849,7 +858,4 @@ class Link_manager extends REST_Controller
         curl_close($curl);
         // echo $response;
     }
-
-
-
 }
