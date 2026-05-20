@@ -64,12 +64,26 @@ class Templates_tools extends AdminController
                 // $rg = get_custom_fields('customers', ['id' => 68], $proposal->rel_id);
                 $rg = $this->get_custom_field_value_db($proposal->rel_id, 68, 'customers');
                 $data_nasc = $this->get_custom_field_value_db($proposal->rel_id, 70, 'customers');
-                $timestamp = strtotime($data_nasc);
+                $customer_cf_cpf = $this->get_custom_field_value_db($proposal->rel_id, 3, 'customers');
+
+                $customer_row = $this->db
+                    ->select('vat')
+                    ->where('userid', (int) $proposal->rel_id)
+                    ->get(db_prefix() . 'clients')
+                    ->row();
+
+                $customer_vat = '';
+                if ($customer_row && !empty($customer_row->vat)) {
+                    $customer_vat = $customer_row->vat;
+                } elseif (!empty($customer_cf_cpf)) {
+                    $customer_vat = $customer_cf_cpf;
+                }
 
                 $customer = [
 
                     "rg" => $rg,
                     "data_nasc" => $data_nasc,
+                    "vat" => $customer_vat,
 
                 ];
 
@@ -80,6 +94,10 @@ class Templates_tools extends AdminController
                 foreach ($custom_fields as $field) {
                     $valor_campo = $this->get_custom_field_value_db($proposal_id, $field['id']);
                     $custom_data[$field['name']] = $valor_campo;
+                }
+                // Garante disponibilidade do CPF da proposta (CF id 23) no template.
+                if (!isset($custom_data['CPF'])) {
+                    $custom_data['CPF'] = $this->get_custom_field_value_db($proposal_id, 23);
                 }
                 // Passar dados para o template
                 $proposal->custom_fields = $custom_data;

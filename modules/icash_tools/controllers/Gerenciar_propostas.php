@@ -141,7 +141,11 @@ class Gerenciar_propostas extends AdminController
 
 
         $proposal_fields = $this->input->post('proposal_fields');
-        $proposal_to = $this->input->post('proposal_to');
+        if (!is_array($proposal_fields)) {
+            $proposal_fields = [];
+        }
+        $proposal_to = trim((string) $this->input->post('proposal_to', true));
+        $proposal_cpf = isset($proposal_fields[23]) ? trim((string) $proposal_fields[23]) : '';
         // VERIFICA SE OS VALORES MUDARAM NOS CAMPOS PERSONALIZADOS
 
         // busca todos os campos atuais dessa proposta
@@ -194,6 +198,18 @@ class Gerenciar_propostas extends AdminController
             }
         }
 
+        $old_proposal_to = trim((string) $proposal->proposal_to);
+        if ($proposal_to !== '' && $old_proposal_to !== $proposal_to) {
+            $changed_fields[] = [
+                'method' => __FUNCTION__,
+                'step'   => "Nome do cliente: {$old_proposal_to} -> {$proposal_to}",
+                'event'  => "Campo atualizado",
+                'field'  => 'proposal_to',
+                'old'    => $old_proposal_to,
+                'new'    => $proposal_to,
+            ];
+        }
+
         // FIM DA VERIFICAÇÃO SE MUDOU OPS VALORES
 
         $custom_fields = [];
@@ -236,6 +252,84 @@ class Gerenciar_propostas extends AdminController
                 'proposal'  => $custom_fields
             ]
         ];
+
+        // Sincroniza nome do cliente real (tblclients) e contato principal.
+        // O modal alterava apenas "proposal_to" (campo "Para" da proposta).
+        if ($proposal->rel_type === 'customer' && !empty($proposal->rel_id)) {
+            $customer_id = (int) $proposal->rel_id;
+
+            $current_client = $this->db
+                ->select('vat, company')
+                ->where('userid', $customer_id)
+                ->limit(1)
+                ->get(db_prefix() . 'clients')
+                ->row();
+
+            if ($proposal_to !== '') {
+                $this->db->where('userid', $customer_id);
+                $this->db->update(db_prefix() . 'clients', ['company' => $proposal_to]);
+            }
+
+            if ($proposal_cpf !== '') {
+                $old_vat = $current_client->vat ?? '';
+                if (trim((string) $old_vat) !== $proposal_cpf) {
+                    $changed_fields[] = [
+                        'method' => __FUNCTION__,
+                        'step'   => "CPF cliente: {$old_vat} -> {$proposal_cpf}",
+                        'event'  => "Campo atualizado",
+                        'field'  => 'customer_vat',
+                        'old'    => $old_vat,
+                        'new'    => $proposal_cpf,
+                    ];
+                }
+
+                // Atualiza VAT no cadastro principal do cliente.
+                $this->db->where('userid', $customer_id);
+                $this->db->update(db_prefix() . 'clients', ['vat' => $proposal_cpf]);
+
+                // Atualiza também o custom field do cliente (customers, field id 3).
+                $existing_customer_cf = $this->db
+                    ->where('relid', $customer_id)
+                    ->where('fieldto', 'customers')
+                    ->where('fieldid', 3)
+                    ->limit(1)
+                    ->get(db_prefix() . 'customfieldsvalues')
+                    ->row();
+
+                if ($existing_customer_cf) {
+                    $this->db->where('id', $existing_customer_cf->id);
+                    $this->db->update(db_prefix() . 'customfieldsvalues', ['value' => $proposal_cpf]);
+                } else {
+                    $this->db->insert(db_prefix() . 'customfieldsvalues', [
+                        'relid'   => $customer_id,
+                        'fieldto' => 'customers',
+                        'fieldid' => 3,
+                        'value'   => $proposal_cpf,
+                    ]);
+                }
+            }
+
+            $primary_contact = $this->db
+                ->where('userid', $customer_id)
+                ->where('is_primary', 1)
+                ->limit(1)
+                ->get(db_prefix() . 'contacts')
+                ->row();
+
+            if ($primary_contact && $proposal_to !== '') {
+                $name_parts = preg_split('/\s+/', $proposal_to, -1, PREG_SPLIT_NO_EMPTY);
+                $first_name = $name_parts[0] ?? $proposal_to;
+                $last_name = count($name_parts) > 1
+                    ? implode(' ', array_slice($name_parts, 1))
+                    : ((string) $primary_contact->lastname !== '' ? $primary_contact->lastname : $first_name);
+
+                $this->db->where('id', $primary_contact->id);
+                $this->db->update(db_prefix() . 'contacts', [
+                    'firstname' => $first_name,
+                    'lastname'  => $last_name,
+                ]);
+            }
+        }
 
 
         $updated = $this->proposals_model->update($updateData, $proposal_id);

@@ -28,6 +28,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
+                <label for="cpf"><?php echo _l('CPF'); ?></label>
+                <input type="text" name="proposal_fields[23]" id="cpf" class="form-control" value="<?= $proposal->customer['vat'] ?? ($proposal->custom_fields['CPF'] ?? ''); ?>" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
                 <label for="email"><?php echo _l('Email'); ?></label>
                 <input type="email" id="email" name="proposal_fields[90]" class="form-control" value="<?= $proposal->custom_fields['Email']; ?>" required>
             </div>
@@ -96,19 +104,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="banco">Banco da Conta</label>
-                <input type="text" id="banco" class="form-control" value="<?= $proposal->custom_fields['Banco']; ?>">
+                <input type="text" id="banco" name="proposal_fields[93]" class="form-control" value="<?= $proposal->custom_fields['Banco']; ?>">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="agencia">Agência</label>
-                <input type="text" id="agencia" class="form-control" value="<?= $proposal->custom_fields['Agência']; ?>">
+                <input type="text" id="agencia" name="proposal_fields[94]" class="form-control" value="<?= $proposal->custom_fields['Agência']; ?>">
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="conta">Conta</label>
-                <input type="text" id="conta" class="form-control" value="<?= $proposal->custom_fields['Conta']; ?>">
+                <input type="text" id="conta" name="proposal_fields[95]" class="form-control" value="<?= $proposal->custom_fields['Conta']; ?>">
             </div>
         </div>
     </div>

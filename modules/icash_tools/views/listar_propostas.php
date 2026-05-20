@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php init_head(); ?>
 <?php
-$version = '12.7.846';
+$version = '12.7.847';
 if ($this->uri->segment(3) == 'listar_propostas') {
     // <!-- Bootstrap JS -->
     echo '<link href="' . module_dir_url('icash_tools', 'assets/css/icash-tools-proposals-styles.css?v=' . $version) . '" rel="stylesheet">';

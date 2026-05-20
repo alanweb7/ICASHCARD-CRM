@@ -1,4 +1,15 @@
 window.addEventListener('DOMContentLoaded', function () {
+    // Listener dedicado para o checkbox de recusa (modal de documentos).
+    $(document).off('change.icashRecusa', '#recusar_doc').on('change.icashRecusa', '#recusar_doc', function () {
+        const checked = $(this).is(':checked');
+        if (checked) {
+            $('#motivo_recusa_div').css('display', 'block');
+            $('#save_info').css('display', 'inline-block');
+        } else {
+            $('#motivo_recusa_div, #save_info').css('display', 'none');
+        }
+    });
+
     $(document).ready(function () {
         // Quando o modal é aberto, carregar o ID da proposta no campo correspondente
         $('#editProposalStatusModal').on('show.bs.modal', function (event) {
@@ -448,6 +459,12 @@ function openDocsProposal(info, viewOnly) {
 
     // const data = JSON.parse(info);
     const etapa = info.proposal_etapa;
+    const etapaNorm = String(etapa || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+    const isEtapaEmAnaliseDocumental = etapaNorm.startsWith('em analise documenta');
     const hash = info.hash;
     var completed = info.completed;
     var action = info.action;
@@ -488,7 +505,7 @@ function openDocsProposal(info, viewOnly) {
      * ACOES DOS CHECKBOXES
      */
 
-    $('.form-check-input').on('change', function () {
+    $('.form-check-input').off('change.icashDocs').on('change.icashDocs', function () {
         let infoData;
 
         try {
@@ -510,15 +527,11 @@ function openDocsProposal(info, viewOnly) {
         // Mostrar campo de recusa e botão salvar se "Recusar" estiver marcado
 
         if ($('#recusar_doc').is(':checked')) {
-
-            if (activeIn.includes(etapa)) {
-                $('#motivo_recusa_div, #save_info').show();
-            } else {
-                $('#motivo_recusa_div, #save_info').hide();
-            }
-
+            // Força exibição para evitar conflito com CSS base (#save_info { display:none; }).
+            $('#motivo_recusa_div').css('display', 'block');
+            $('#save_info').css('display', 'inline-block');
         } else {
-            $('#motivo_recusa_div, #save_info').hide();
+            $('#motivo_recusa_div, #save_info').css('display', 'none');
         }
 
 
@@ -1277,4 +1290,3 @@ function deleteImage(id, type = '') {
         // location.reload();
     });
 }
-
